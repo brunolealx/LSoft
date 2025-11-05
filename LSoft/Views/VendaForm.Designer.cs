@@ -33,22 +33,23 @@
             comboBox2 = new ComboBox();
             label2 = new Label();
             label3 = new Label();
-            textBox1 = new TextBox();
             textBox2 = new TextBox();
             label4 = new Label();
             button1 = new Button();
-            dataGridView1 = new DataGridView();
-            textBox3 = new TextBox();
+            dgvVendaItem = new DataGridView();
+            txtTotal = new TextBox();
             label5 = new Label();
-            textBox4 = new TextBox();
+            txtValorPago = new TextBox();
             label6 = new Label();
             label7 = new Label();
-            textBox6 = new TextBox();
+            txtTroco = new TextBox();
             label8 = new Label();
             button2 = new Button();
             button3 = new Button();
             comboBox3 = new ComboBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            nudQuantidade = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)dgvVendaItem).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudQuantidade).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -94,13 +95,6 @@
             label3.TabIndex = 4;
             label3.Text = "Quantidade:";
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(482, 70);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 5;
-            // 
             // textBox2
             // 
             textBox2.Location = new Point(672, 70);
@@ -126,20 +120,22 @@
             button1.Text = "Adicionar Produto";
             button1.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgvVendaItem
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 128);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(760, 231);
-            dataGridView1.TabIndex = 9;
+            dgvVendaItem.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvVendaItem.Location = new Point(12, 128);
+            dgvVendaItem.Name = "dgvVendaItem";
+            dgvVendaItem.Size = new Size(760, 231);
+            dgvVendaItem.TabIndex = 9;
+           
             // 
-            // textBox3
+            // txtTotal
             // 
-            textBox3.Location = new Point(75, 365);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(191, 23);
-            textBox3.TabIndex = 11;
+            txtTotal.Location = new Point(75, 365);
+            txtTotal.Name = "txtTotal";
+            txtTotal.Size = new Size(191, 23);
+            txtTotal.TabIndex = 11;
+            
             // 
             // label5
             // 
@@ -150,12 +146,12 @@
             label5.TabIndex = 10;
             label5.Text = "Total:";
             // 
-            // textBox4
+            // txtValorPago
             // 
-            textBox4.Location = new Point(75, 394);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(191, 23);
-            textBox4.TabIndex = 13;
+            txtValorPago.Location = new Point(75, 394);
+            txtValorPago.Name = "txtValorPago";
+            txtValorPago.Size = new Size(191, 23);
+            txtValorPago.TabIndex = 13;
             // 
             // label6
             // 
@@ -175,12 +171,12 @@
             label7.TabIndex = 14;
             label7.Text = "Forma de pagamento";
             // 
-            // textBox6
+            // txtTroco
             // 
-            textBox6.Location = new Point(75, 452);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(191, 23);
-            textBox6.TabIndex = 17;
+            txtTroco.Location = new Point(75, 452);
+            txtTroco.Name = "txtTroco";
+            txtTroco.Size = new Size(191, 23);
+            txtTroco.TabIndex = 17;
             // 
             // label8
             // 
@@ -217,27 +213,34 @@
             comboBox3.Size = new Size(127, 23);
             comboBox3.TabIndex = 20;
             // 
+            // nudQuantidade
+            // 
+            nudQuantidade.Location = new Point(473, 70);
+            nudQuantidade.Name = "nudQuantidade";
+            nudQuantidade.Size = new Size(109, 23);
+            nudQuantidade.TabIndex = 21;
+            // 
             // VendaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.HotTrack;
             ClientSize = new Size(784, 561);
+            Controls.Add(nudQuantidade);
             Controls.Add(comboBox3);
             Controls.Add(button3);
             Controls.Add(button2);
-            Controls.Add(textBox6);
+            Controls.Add(txtTroco);
             Controls.Add(label8);
             Controls.Add(label7);
-            Controls.Add(textBox4);
+            Controls.Add(txtValorPago);
             Controls.Add(label6);
-            Controls.Add(textBox3);
+            Controls.Add(txtTotal);
             Controls.Add(label5);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvVendaItem);
             Controls.Add(button1);
             Controls.Add(textBox2);
             Controls.Add(label4);
-            Controls.Add(textBox1);
             Controls.Add(label3);
             Controls.Add(comboBox2);
             Controls.Add(label2);
@@ -246,7 +249,9 @@
             Name = "VendaForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Venda";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += VendaForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvVendaItem).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudQuantidade).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -258,20 +263,20 @@
         private ComboBox comboBox2;
         private Label label2;
         private Label label3;
-        private TextBox textBox1;
         private TextBox textBox2;
         private Label label4;
         private Button button1;
-        private DataGridView dataGridView1;
-        private TextBox textBox3;
+        private DataGridView dgvVendaItem;
+        private TextBox txtTotal;
         private Label label5;
-        private TextBox textBox4;
+        private TextBox txtValorPago;
         private Label label6;
         private Label label7;
-        private TextBox textBox6;
+        private TextBox txtTroco;
         private Label label8;
         private Button button2;
         private Button button3;
         private ComboBox comboBox3;
+        private NumericUpDown nudQuantidade;
     }
 }

@@ -32,8 +32,9 @@ namespace LSoft
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            var form = new VendaForm();
-            form.ShowDialog(); // Abre modal
+            int vendaId = 1; // por exemplo, a venda atual
+            VendaForm form = new VendaForm(vendaId);
+            form.Show();
         }
 
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
